@@ -1,18 +1,17 @@
-#ifndef main_h
-#define main_h
+#ifndef MAIN_H
+#define MAIN_H
 
+/* Standard libraries */
 #include <stdarg.h>
-/**
- * struct allformat - choose the type
- * @c: type of the string
- * @f: pointer to function to call
- */
+#include <unistd.h>
+#include <stdlib.h>
 
-typedef struct allformat
-{
-	char c;
-	void (*f)(va_list args);
-} allformat;
-
+/* Main function prototype */
 int _printf(const char *format, ...);
+
+/* Helper function prototypes */
+int _putchar(char c);
+int print_string(char *str);
+int handle_specifier(char specifier, va_list args);
+
 #endif
