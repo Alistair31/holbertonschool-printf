@@ -44,4 +44,92 @@ _printf("%s %c %d", s, b, a) <--------- here you can use arguments that you pass
 
   NPRC* : Non PRintable Character (ex: "\n"  ->\<- is a Non PRintable Character)  
   -Not every arguments is included yet-  
-## Roadmap
+## Flowchart
+```mermaid
+---
+config:
+  theme: default
+  look: neo
+---
+flowchart TB
+    Start@{ label: "_printf('Hello %d!', 42)" } --> Init["Initialisation<br>va_start<br>count=0, i=0"]
+    Init --> Loop{"Parcourir<br>format[i]"}
+    Loop -- Caractère normal --> Normal["_putchar<br>write(1, &amp;c, 1)"]
+    Normal --> AddCount1["count++"]
+    AddCount1 --> NextChar["i++"]
+    Loop -- Trouve % --> Percent["i++<br>Lire specifier"]
+    Percent --> Switch{"Quel<br>type?"}
+    Switch -- %c --> Char["va_arg → char<br>_putchar"]
+    Switch -- %s --> String["va_arg → char*<br>print_string<br>boucle _putchar"]
+    Switch -- %% --> PercentSign@{ label: "_putchar('%')" }
+    Switch -- %d ou %i --> Number["va_arg → int<br>print_number"]
+    Number --> CheckNeg{"n &lt; 0?"}
+    CheckNeg -- Oui --> PrintMinus@{ label: "_putchar('-')<br>num = -n" }
+    CheckNeg -- Non --> SetNum["num = n"]
+    PrintMinus --> Recursive{"num >= 10?"}
+    SetNum --> Recursive
+    Recursive -- Oui --> Recurse["print_number<br>num/10<br>RECURSION"]
+    Recurse --> Digit@{ label: "_putchar<br>(num%10 + '0')" }
+    Recursive -- Non --> Digit
+    Char --> AddCount2["count += retour"]
+    String --> AddCount2
+    PercentSign --> AddCount2
+    Digit --> AddCount2
+    AddCount2 --> NextChar
+    NextChar --> Loop
+    Loop -- Fin \\0 --> End["va_end<br>return count"]
+    End --> Output["Affichage complet"]
+
+    Start@{ shape: rect}
+    PercentSign@{ shape: rect}
+    PrintMinus@{ shape: rect}
+    Digit@{ shape: rect}
+    style Start fill:#FFFFFF
+    style Init fill:#FFFFFF
+    style Loop fill:#FFFFFF
+    style Normal fill:#FFFFFF
+    style AddCount1 fill:#FFFFFF
+    style NextChar fill:#FFFFFF
+    style Percent fill:#FFFFFF
+    style Switch fill:#FFFFFF
+    style Char fill:#FFFFFF
+    style String fill:#FFFFFF
+    style PercentSign fill:#FFFFFF
+    style Number fill:#FFFFFF
+    style CheckNeg fill:#FFFFFF
+    style PrintMinus fill:#FFFFFF
+    style SetNum fill:#FFFFFF
+    style Recursive fill:#FFFFFF
+    style Recurse fill:#FFFFFF
+    style Digit fill:#FFFFFF
+    style AddCount2 fill:#FFFFFF
+    style End fill:#FFFFFF,stroke:#FFFFFF
+    style Output fill:#FFFFFF
+    linkStyle 0 stroke:#FFFFFF,fill:none
+    linkStyle 1 stroke:#FFFFFF,fill:none
+    linkStyle 2 stroke:#FFFFFF,fill:none
+    linkStyle 3 stroke:#FFFFFF,fill:none
+    linkStyle 4 stroke:#FFFFFF,fill:none
+    linkStyle 5 stroke:#FFFFFF,fill:none
+    linkStyle 6 stroke:#FFFFFF,fill:none
+    linkStyle 7 stroke:#FFFFFF,fill:none
+    linkStyle 8 stroke:#FFFFFF,fill:none
+    linkStyle 9 stroke:#FFFFFF,fill:none
+    linkStyle 10 stroke:#FFFFFF,fill:none
+    linkStyle 11 stroke:#FFFFFF,fill:none
+    linkStyle 12 stroke:#FFFFFF,fill:none
+    linkStyle 13 stroke:#FFFFFF,fill:none
+    linkStyle 14 stroke:#FFFFFF,fill:none
+    linkStyle 15 stroke:#FFFFFF,fill:none
+    linkStyle 16 stroke:#FFFFFF,fill:none
+    linkStyle 17 stroke:#FFFFFF,fill:none
+    linkStyle 18 stroke:#FFFFFF,fill:none
+    linkStyle 19 stroke:#FFFFFF,fill:none
+    linkStyle 20 stroke:#FFFFFF,fill:none
+    linkStyle 21 stroke:#FFFFFF,fill:none
+    linkStyle 22 stroke:#FFFFFF,fill:none
+    linkStyle 23 stroke:#FFFFFF
+    linkStyle 24 stroke:#FFFFFF,fill:none
+    linkStyle 25 stroke:#FFFFFF,fill:none
+    linkStyle 26 stroke:#FFFFFF,fill:none
+```
