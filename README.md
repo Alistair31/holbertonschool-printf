@@ -13,11 +13,17 @@ exemple:
 
 _printf("this is an exemple") <-------- without any argument you can print a simple string.  
 -> This is an exemple <--------------- so this is the output of the function.  
+
+
+
 ```
 int a = 10  
 char b = 'z'  
 char *s = "hello"  
   
+_printf("%s %c %d", s, b, a) <------- here you can use arguments that you pass after the string (between double quotes "") to variables.  
+-> hello z 10  
+
 _printf("%s %c %d", s, b, a) <--------- here you can use arguments that you pass  
 -> hello z 10                ---------- after the string (between " ") to variables.
 ```
