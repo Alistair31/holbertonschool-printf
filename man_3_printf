@@ -1,0 +1,59 @@
+.TH _PRINTF 3 "prototype of printf function"
+.SH NAME
+_printf \- formatted output conversion
+.SH SYNOPSIS
+.nf
+#include "main.h"
+
+int _printf(const char *format, ...);
+.fi
+.SH DESCRIPTION
+The _printf() function writes output to the standard output.
+The string printed is specified by 'format'. The format string
+contains ordinary characters that will be printed to the
+output. The format string may also contain conversion specifications (%*),
+which are replaced by the values of the corresponding additional arguments.
+
+Common specifiers include:
+.TP
+%c
+Print a single character
+.TP
+%s
+Print a string of characters
+.TP
+%d, %i
+Print a signed decimal integer
+.TP
+%%
+Print a literal '%' character
+
+.SH EXAMPLES
+Some examples of use of _printf function.
+.TP
+for a character: %case
+.br
+char ch = a
+.br
+_printf("%c", ch) -> a
+.br
+.TP
+for a string: %s
+.br
+string = "hello"
+.br
+_printf("%s", string) -> hello
+.TP
+for a signed decimal: %d, %i
+.br
+n = 12
+.br
+ngn = -20
+.br
+_printf("%d %d", n, ngn) -> 12 -20
+.br
+_printf("%i %i", n, ngn) -> 12 -20
+.TP
+for %: %%
+.br
+_printf("%%") -> %

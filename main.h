@@ -14,4 +14,5 @@ typedef struct allformat
 	void (*f)(va_list args);
 } allformat;
 
+int _printf(const char *format, ...);
 #endif
