@@ -12,6 +12,7 @@ int _printf(const char *format, ...);
 /* Helper function prototypes */
 int _putchar(char c);
 int print_string(char *str);
+int printnumber(int n);
 int handle_specifier(char specifier, va_list args);
 
 #endif

@@ -23,6 +23,12 @@ int handle_specifier(char specifier, va_list args)
 		str = va_arg(args, char *);
 		count = print_string(str);
 	}
+	else if (specifier == 'd' || specifier == 'i')
+	{
+		int n = va_arg(args, int);
+
+		count = printnumber(n);
+	}
 	else if (specifier == '%')
 	{
 		count = _putchar('%');
