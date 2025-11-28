@@ -89,6 +89,66 @@ flowchart TB
     Cleanup --> Return["return count"]
     Return --> End(["End"])
 
+     Init:::Class_01
+     Loop:::Class_01
+     Putchar1:::Class_01
+     Inc1:::Class_01
+     ReadSpec:::Class_01
+     Handle:::Class_01
+     Switch:::Class_01
+     VaChar:::Class_01
+     PrintC:::Class_01
+     AddCount:::Class_01
+     VaStr:::Class_01
+     PrintS:::Class_01
+     PrintPercent:::Class_01
+     VaInt:::Class_01
+     PrintNum:::Class_01
+     InitNum:::Class_01
+     IsNeg:::Class_01
+     Minus:::Class_01
+     ConvertNeg:::Class_01
+     ConvertPos:::Class_01
+     CheckZero:::Class_01
+     PrintZero:::Class_01
+     FillBuffer:::Class_01
+     PrintBuffer:::Class_01
+     RetNum:::Class_01
+     Inc2:::Class_01
+     Cleanup:::Class_01
+     Return:::Class_01
+     End:::Class_01
+    classDef Class_01 stroke-width:2px, stroke-dasharray:0, stroke:#000000, fill:#FFFFFF, color:#000000
+    style Start fill:#FFFFFF,stroke:#000000,color:#000000
+    style Init fill:#FFFFFF
+    style Loop fill:#FFFFFF
+    style Putchar1 fill:#FFFFFF
+    style Inc1 fill:#FFFFFF
+    style ReadSpec fill:#FFFFFF
+    style Handle fill:#FFFFFF
+    style Switch fill:#FFFFFF
+    style VaChar fill:#FFFFFF
+    style PrintC fill:#FFFFFF
+    style AddCount fill:#FFFFFF
+    style VaStr fill:#FFFFFF
+    style PrintS fill:#FFFFFF
+    style PrintPercent fill:#FFFFFF
+    style VaInt fill:#FFFFFF
+    style PrintNum fill:#FFFFFF
+    style InitNum fill:#FFFFFF
+    style IsNeg fill:#FFFFFF
+    style Minus fill:#FFFFFF
+    style ConvertNeg fill:#FFFFFF
+    style ConvertPos fill:#FFFFFF
+    style CheckZero fill:#FFFFFF
+    style PrintZero fill:#FFFFFF
+    style FillBuffer fill:#FFFFFF
+    style PrintBuffer fill:#FFFFFF
+    style RetNum fill:#FFFFFF
+    style Inc2 fill:#FFFFFF
+    style Cleanup fill:#FFFFFF
+    style Return fill:#FFFFFF
+    style End fill:#FFFFFF
     linkStyle 0 stroke:#FFFFFF,fill:none
     linkStyle 1 stroke:#FFFFFF,fill:none
     linkStyle 2 stroke:#FFFFFF,fill:none
