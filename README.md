@@ -51,65 +51,44 @@ _printf("%s %c %d", s, b, a) <--------- here you can use arguments that you pass
   -Not every arguments is included yet-  (not included are: %b; %o; %x; %X; %S; %p; %R) (%r still in developpement)
 ## Flowchart
 ```mermaid
----
-config:
-  theme: default
-  look: neo
----
 flowchart TB
-    Start@{ label: "_printf('Hello %d!', 42)" } --> Init["Initialisation<br>va_start<br>count=0, i=0"]
-    Init --> Loop{"Parcourir<br>format[i]"}
-    Loop -- Caractère normal --> Normal["_putchar<br>write(1, &amp;c, 1)"]
-    Normal --> AddCount1["count++"]
-    AddCount1 --> NextChar["i++"]
-    Loop -- Trouve % --> Percent["i++<br>Lire specifier"]
-    Percent --> Switch{"Quel<br>type?"}
-    Switch -- %c --> Char["va_arg → char<br>_putchar"]
-    Switch -- %s --> String["va_arg → char*<br>print_string<br>boucle _putchar"]
-    Switch -- %% --> PercentSign@{ label: "_putchar('%')" }
-    Switch -- %d ou %i --> Number["va_arg → int<br>print_number"]
-    Number --> CheckNeg{"n &lt; 0?"}
-    CheckNeg -- Oui --> PrintMinus@{ label: "_putchar('-')<br>num = -n" }
-    CheckNeg -- Non --> SetNum["num = n"]
-    PrintMinus --> Recursive{"num >= 10?"}
-    SetNum --> Recursive
-    Recursive -- Oui --> Recurse["print_number<br>num/10<br>RECURSION"]
-    Recurse --> Digit@{ label: "_putchar<br>(num%10 + '0')" }
-    Recursive -- Non --> Digit
-    Char --> AddCount2["count += retour"]
-    String --> AddCount2
-    PercentSign --> AddCount2
-    Digit --> AddCount2
-    AddCount2 --> NextChar
-    NextChar --> Loop
-    Loop -- Fin \\0 --> End["va_end<br>return count"]
-    End --> Output["Affichage complet"]
+    Start(["_printf called"]) --> Init["Initialize va_start<br>count=0 i=0"]
+    Init --> Loop{"Loop through<br>format i"}
+    Loop -- Normal char --> Putchar1["_putchar"]
+    Putchar1 --> Inc1["count++ i++"]
+    Inc1 --> Loop
+    Loop -- Find % --> ReadSpec["i++<br>Read specifier"]
+    ReadSpec --> Handle["handle_specifier"]
+    Handle --> Switch{"Check type"}
+    Switch -- % c --> VaChar["va_arg int"]
+    VaChar --> PrintC["_putchar"]
+    PrintC --> AddCount["count += return"]
+    Switch -- % s --> VaStr["va_arg char ptr"]
+    VaStr --> PrintS["print_string<br>loop _putchar"]
+    PrintS --> AddCount
+    Switch -- %% --> PrintPercent["_putchar %"]
+    PrintPercent --> AddCount
+    Switch -- % d or i --> VaInt["va_arg int"]
+    VaInt --> PrintNum["printnumber"]
+    PrintNum --> InitNum["count = 0<br>i = 0<br>buf array"]
+    InitNum --> IsNeg{"n less than 0?"}
+    IsNeg -- Yes --> Minus["_putchar minus<br>count++"]
+    Minus --> ConvertNeg["u = unsigned minus n"]
+    IsNeg -- No --> ConvertPos["u = unsigned n"]
+    ConvertNeg --> CheckZero{"u equals 0?"}
+    ConvertPos --> CheckZero
+    CheckZero -- Yes --> PrintZero["_putchar zero<br>return count+1"]
+    PrintZero --> AddCount
+    CheckZero -- No --> FillBuffer["While u greater 0:<br>buf i++ = zero + u mod 10<br>u divide 10"]
+    FillBuffer --> PrintBuffer["While i greater 0:<br>_putchar buf minus minus i<br>count++"]
+    PrintBuffer --> RetNum["return count"]
+    RetNum --> AddCount
+    AddCount --> Inc2["i++"]
+    Inc2 --> Loop
+    Loop -- End null --> Cleanup["va_end"]
+    Cleanup --> Return["return count"]
+    Return --> End(["End"])
 
-    Start@{ shape: rect}
-    PercentSign@{ shape: rect}
-    PrintMinus@{ shape: rect}
-    Digit@{ shape: rect}
-    style Start fill:#FFFFFF
-    style Init fill:#FFFFFF
-    style Loop fill:#FFFFFF
-    style Normal fill:#FFFFFF
-    style AddCount1 fill:#FFFFFF
-    style NextChar fill:#FFFFFF
-    style Percent fill:#FFFFFF
-    style Switch fill:#FFFFFF
-    style Char fill:#FFFFFF
-    style String fill:#FFFFFF
-    style PercentSign fill:#FFFFFF
-    style Number fill:#FFFFFF
-    style CheckNeg fill:#FFFFFF
-    style PrintMinus fill:#FFFFFF
-    style SetNum fill:#FFFFFF
-    style Recursive fill:#FFFFFF
-    style Recurse fill:#FFFFFF
-    style Digit fill:#FFFFFF
-    style AddCount2 fill:#FFFFFF
-    style End fill:#FFFFFF,stroke:#FFFFFF
-    style Output fill:#FFFFFF
     linkStyle 0 stroke:#FFFFFF,fill:none
     linkStyle 1 stroke:#FFFFFF,fill:none
     linkStyle 2 stroke:#FFFFFF,fill:none
@@ -133,10 +112,19 @@ flowchart TB
     linkStyle 20 stroke:#FFFFFF,fill:none
     linkStyle 21 stroke:#FFFFFF,fill:none
     linkStyle 22 stroke:#FFFFFF,fill:none
-    linkStyle 23 stroke:#FFFFFF
+    linkStyle 23 stroke:#FFFFFF,fill:none
     linkStyle 24 stroke:#FFFFFF,fill:none
     linkStyle 25 stroke:#FFFFFF,fill:none
     linkStyle 26 stroke:#FFFFFF,fill:none
+    linkStyle 27 stroke:#FFFFFF,fill:none
+    linkStyle 28 stroke:#FFFFFF,fill:none
+    linkStyle 29 stroke:#FFFFFF,fill:none
+    linkStyle 30 stroke:#FFFFFF,fill:none
+    linkStyle 31 stroke:#FFFFFF,fill:none
+    linkStyle 32 stroke:#FFFFFF,fill:none
+    linkStyle 33 stroke:#FFFFFF,fill:none
+    linkStyle 34 stroke:#FFFFFF,fill:none
+    linkStyle 35 stroke:#FFFFFF,fill:none
 ```
 ## Roadmap
 ```mermaid
