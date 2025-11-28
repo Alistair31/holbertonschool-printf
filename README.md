@@ -27,7 +27,6 @@ _printf("%s %c %d", s, b, a) <------- here you can use arguments that you pass a
 _printf("%s %c %d", s, b, a) <--------- here you can use arguments that you pass  
 -> hello z 10                ---------- after the string (between " ") to variables.
 ```
-  -placeholder exemple with more arguments, custom one and also flags and modifiers-  
 
 ## Arguments
 
@@ -49,7 +48,7 @@ _printf("%s %c %d", s, b, a) <--------- here you can use arguments that you pass
 | Rot13 string        |     %R      | print a converted rot13 string |                     |  
 
   NPRC* : Non PRintable Character (ex: "\n"  ->\<- is a Non PRintable Character)  
-  -Not every arguments is included yet-  
+  -Not every arguments is included yet-  (not included are: %b; %o; %x; %X; %S; %p; %R) (%r still in developpement)
 ## Flowchart
 ```mermaid
 ---
