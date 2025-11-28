@@ -25,6 +25,9 @@ Print a string of characters
 %d, %i
 Print a signed decimal integer
 .TP
+%u
+Print a unsigned integer
+.TP
 %%
 Print a literal '%' character
 
@@ -54,6 +57,15 @@ _printf("%d %d", n, ngn) -> 12 -20
 .br
 _printf("%i %i", n, ngn) -> 12 -20
 .TP
+for an unsigned integer: %u
+.br
+n = 12
+.br
+ngn = -20
+.br
+_printf("%u %u", n, ngn) -> 12 20
+.TP
 for %: %%
 .br
 _printf("%%") -> %
+.TP
