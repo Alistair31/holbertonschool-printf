@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * printnumber - Print an integer
+ * print_unsigned_number - Print an integer (always positive)
  * @n: integer to print
  * Return: number of characters
  */
-int printnumber(int n)
+int print_unsigned_number(int n)
 {
 	int count = 0;
 	unsigned int u;
@@ -13,7 +13,6 @@ int printnumber(int n)
 
 	if (n < 0)
 	{
-		_putchar('-');
 		count++;
 		u = (unsigned int)(-(long)n);
 	}

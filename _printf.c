@@ -29,6 +29,12 @@ int handle_specifier(char specifier, va_list args)
 
 		count = printnumber(n);
 	}
+	else if (specifier == 'u')
+	{
+		int n = va_arg(args, int);
+
+		count = print_unsigned_number(n);
+	}
 	else if (specifier == '%')
 	{
 		count = _putchar('%');

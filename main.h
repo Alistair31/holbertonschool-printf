@@ -13,6 +13,7 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int print_string(char *str);
 int printnumber(int n);
+int print_unsigned_number(int n);
 int handle_specifier(char specifier, va_list args);
 
 #endif
