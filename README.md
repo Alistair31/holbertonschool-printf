@@ -139,3 +139,64 @@ flowchart TB
     linkStyle 25 stroke:#FFFFFF,fill:none
     linkStyle 26 stroke:#FFFFFF,fill:none
 ```
+## Roadmap
+```mermaid
+---
+config:
+  theme: default
+  look: neo
+---
+flowchart TB
+    C["printbinary (%b)"] --> n1["print_unsigned_octal (%o)"] & n11["print_unsigned_lwhex (%x)"] & n12["print_unsigned_uphex (%X)"]
+    n11 --> n13@{ label: "set buffer for 'write'" }
+    n1 --> n13
+    n12 --> n13
+    n13 --> n14["print_nprc_in_hex (%S)"]
+    n14 --> n15["print_adress (%p)"]
+    n15 --> n16@{ label: "add flag '+'" } & n17@{ label: "add flag ' ' (space)" } & n18@{ label: "add flag '#'" }
+    n20@{ label: "add modifier 'l'" } --> n22@{ label: "add flag 'field width'" }
+    n21@{ label: "add modifier 'h'" } --> n22
+    n22 --> n23@{ label: "add flag 'precision'" }
+    n23 --> n24@{ label: "add flag '0'" }
+    n24 --> n25@{ label: "add flag '-'" }
+    n25 --> n26["printreverse (%r)"]
+    n26 --> n27["print_rot (%R)"]
+    n18 --> n28["<br>"]
+    n17 --> n28
+    n16 --> n28
+    n28 --> n20 & n21
+
+    n13@{ shape: rect}
+    n16@{ shape: rect}
+    n17@{ shape: rect}
+    n18@{ shape: rect}
+    n20@{ shape: rect}
+    n22@{ shape: rect}
+    n21@{ shape: rect}
+    n23@{ shape: rect}
+    n24@{ shape: rect}
+    n25@{ shape: rect}
+    linkStyle 0 stroke:#FFFFFF,fill:none
+    linkStyle 1 stroke:#FFFFFF,fill:none
+    linkStyle 2 stroke:#FFFFFF,fill:none
+    linkStyle 3 stroke:#FFFFFF,fill:none
+    linkStyle 4 stroke:#FFFFFF,fill:none
+    linkStyle 5 stroke:#FFFFFF,fill:none
+    linkStyle 6 stroke:#FFFFFF,fill:none
+    linkStyle 7 stroke:#FFFFFF,fill:none
+    linkStyle 8 stroke:#FFFFFF,fill:none
+    linkStyle 9 stroke:#FFFFFF,fill:none
+    linkStyle 10 stroke:#FFFFFF,fill:none
+    linkStyle 11 stroke:#FFFFFF,fill:none
+    linkStyle 12 stroke:#FFFFFF,fill:none
+    linkStyle 13 stroke:#FFFFFF,fill:none
+    linkStyle 14 stroke:#FFFFFF,fill:none
+    linkStyle 15 stroke:#FFFFFF,fill:none
+    linkStyle 16 stroke:#FFFFFF,fill:none
+    linkStyle 17 stroke:#FFFFFF
+    linkStyle 18 stroke:#FFFFFF,fill:none
+    linkStyle 19 stroke:#FFFFFF,fill:none
+    linkStyle 20 stroke:#FFFFFF,fill:none
+    linkStyle 21 stroke:#FFFFFF,fill:none
+    linkStyle 22 stroke:#FFFFFF,fill:none
+```
