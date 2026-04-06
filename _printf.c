@@ -35,12 +35,6 @@ int handle_specifier(char specifier, va_list args)
 
 		count = print_unsigned_number(n);
 	}
-	else if (specifier == 'r')
-	{
-		str = va_arg(args, char *);
-
-		count = printreverse(str);
-	}
 	else if (specifier == '%')
 	{
 		count = _putchar('%');

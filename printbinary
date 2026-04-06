@@ -1,0 +1,10 @@
+#include "main.h"
+/**
+ * printbinary - Print an integer (always positive)
+ * @n: integer to print
+ * Return: number of characters
+ */
+int printbinary(int n)
+{
+	
+}
